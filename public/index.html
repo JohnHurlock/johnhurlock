@@ -61,34 +61,87 @@
   /* ── PROXY FRAME ── */
   #proxy-frame {
     position: fixed; inset: 0; z-index: 100;
-    display: none;
-    flex-direction: column;
-    background: #000;
+    display: none; flex-direction: column; background: #000;
   }
   #proxy-frame.open { display: flex; }
   #proxy-bar {
-    display: flex; align-items: center; gap: 0.5rem;
+    display: flex; align-items: center; gap: 0.6rem;
     padding: 0.4rem 0.75rem;
-    background: rgba(10,8,4,0.95);
+    background: rgba(5,8,15,0.97);
     border-bottom: 1px solid var(--card-border);
-    height: 36px;
-    flex-shrink: 0;
+    height: 46px; flex-shrink: 0;
   }
   #proxy-back {
     background: none; border: none; cursor: pointer;
     color: var(--accent2); font-size: 0.75rem;
-    font-family: var(--font-body);
-    letter-spacing: 0.08em;
+    font-family: var(--font-body); letter-spacing: 0.08em;
     display: flex; align-items: center; gap: 0.35rem;
-    padding: 0.2rem 0.5rem;
-    border-radius: 6px;
-    transition: background 0.2s;
+    padding: 0.2rem 0.5rem; border-radius: 6px;
+    transition: background 0.2s; flex-shrink: 0;
   }
   #proxy-back:hover { background: rgba(56,189,248,0.12); }
-  #proxy-iframe {
-    flex: 1; border: none; width: 100%;
-    background: #000;
+  #proxy-url-bar {
+    flex: 1; display: flex; align-items: center;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid var(--card-border);
+    border-radius: 20px; padding: 0.3rem 0.8rem; gap: 0.4rem;
   }
+  #proxy-url-bar:focus-within { border-color: var(--accent); }
+  #proxy-url-input {
+    flex: 1; background: none; border: none; outline: none;
+    color: var(--text); font-family: var(--font-body);
+    font-size: 0.82rem; letter-spacing: 0.02em;
+  }
+  #proxy-url-input::placeholder { color: var(--muted); }
+  #proxy-go {
+    background: none; border: none; cursor: pointer;
+    color: var(--accent); padding: 0.1rem 0.3rem;
+    font-size: 0.72rem; font-family: var(--font-body);
+    letter-spacing: 0.08em; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  #proxy-go:hover { color: var(--accent2); }
+  #proxy-iframe { flex: 1; border: none; width: 100%; background: #000; }
+
+  /* ── PROXY SEARCH BAR ── */
+  .proxy-search-wrap {
+    width: 100%; max-width: 560px;
+    animation: fadeUp 0.9s 0.15s ease both;
+  }
+  .proxy-search-label {
+    font-size: 0.62rem; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--accent);
+    text-align: center; margin-bottom: 0.5rem;
+    font-family: var(--font-display);
+  }
+  .proxy-search-box {
+    display: flex; align-items: center; gap: 0.5rem;
+    background: rgba(56,189,248,0.04);
+    border: 1px solid rgba(56,189,248,0.28);
+    border-radius: 50px; padding: 0.55rem 1rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    backdrop-filter: blur(12px);
+  }
+  .proxy-search-box:focus-within {
+    border-color: var(--accent);
+    box-shadow: 0 0 20px rgba(56,189,248,0.12);
+  }
+  #proxy-search-input {
+    flex: 1; background: none; border: none; outline: none;
+    color: var(--text); font-family: var(--font-body);
+    font-size: 0.95rem; font-weight: 300; letter-spacing: 0.04em;
+  }
+  #proxy-search-input::placeholder { color: var(--muted); }
+  #proxy-search-btn {
+    background: rgba(56,189,248,0.12);
+    border: 1px solid rgba(56,189,248,0.28);
+    color: var(--accent2); border-radius: 20px;
+    padding: 0.25rem 0.8rem; font-size: 0.72rem;
+    letter-spacing: 0.08em; cursor: pointer;
+    font-family: var(--font-body); text-transform: uppercase;
+    transition: background 0.2s; flex-shrink: 0;
+  }
+  #proxy-search-btn:hover { background: rgba(56,189,248,0.22); }
 
   /* ── APP ── */
   #app {
@@ -378,6 +431,11 @@
       <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
       back
     </button>
+    <div id="proxy-url-bar">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--muted);flex-shrink:0"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input id="proxy-url-input" type="text" placeholder="search or enter url...">
+      <button id="proxy-go" onclick="proxyNavigate()">go</button>
+    </div>
   </div>
   <iframe id="proxy-iframe" sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-top-navigation"></iframe>
 </div>
@@ -400,6 +458,16 @@
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--muted)"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
       <input id="search-input" type="text" placeholder="search or enter url..." autocomplete="off">
       <button id="engine-btn" onclick="cycleEngine()">ddg</button>
+    </div>
+  </div>
+
+  <!-- PROXY SEARCH -->
+  <div class="proxy-search-wrap">
+    <div class="proxy-search-label">✦ proxy</div>
+    <div class="proxy-search-box">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--muted);flex-shrink:0"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input id="proxy-search-input" type="text" placeholder="browse anonymously..." autocomplete="off">
+      <button id="proxy-search-btn" onclick="proxySearch()">go</button>
     </div>
   </div>
 
@@ -704,17 +772,65 @@ window.addEventListener('resize', () => { resizeCanvas(); createStars(starCount)
 initStars();
 
 // ── PROXY ──
+const UV_BASE = 'https://pcroomsir.art-motel.com/uv/service/';
+
+function encodeForUV(url) {
+  // UV uses a custom encoding - encode each char
+  return encodeURIComponent(url)
+    .replace(/%/g, '%25')
+    .split('').map(c => {
+      const code = c.charCodeAt(0);
+      if (code > 127) return encodeURIComponent(c);
+      return c;
+    }).join('');
+}
+
+function toUVUrl(input) {
+  let url = input.trim();
+  if (!url) return null;
+  if (!url.startsWith('http')) {
+    if (url.includes('.') && !url.includes(' ')) {
+      url = 'https://' + url;
+    } else {
+      url = 'https://www.google.com/search?q=' + encodeURIComponent(url);
+    }
+  }
+  // Use btoa encoding which UV supports
+  return UV_BASE + btoa(url);
+}
+
 function openProxy(url) {
   const frame = document.getElementById('proxy-frame');
   const iframe = document.getElementById('proxy-iframe');
+  document.getElementById('proxy-url-input').value = url;
   iframe.src = url;
   frame.classList.add('open');
 }
+
+function proxySearch() {
+  const val = document.getElementById('proxy-search-input').value.trim();
+  if (!val) return;
+  const url = toUVUrl(val);
+  if (url) openProxy(url);
+  document.getElementById('proxy-search-input').value = '';
+}
+
+function proxyNavigate() {
+  const val = document.getElementById('proxy-url-input').value.trim();
+  if (!val) return;
+  const url = toUVUrl(val);
+  if (url) {
+    document.getElementById('proxy-iframe').src = url;
+    document.getElementById('proxy-url-input').value = val;
+  }
+}
+
 function closeProxy() {
   const frame = document.getElementById('proxy-frame');
   const iframe = document.getElementById('proxy-iframe');
   frame.classList.remove('open');
   iframe.src = '';
+  document.getElementById('proxy-url-input').value = '';
 }
 
 // ── SEARCH ENGINES ──
@@ -740,6 +856,12 @@ function setEngine(val) {
   save();
 }
 
+document.getElementById('proxy-search-input').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') { proxySearch(); }
+});
+document.getElementById('proxy-url-input').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') { proxyNavigate(); }
+});
 document.getElementById('search-input').addEventListener('keydown', function(e) {
   if (e.key === 'Enter') {
     const q = this.value.trim();
