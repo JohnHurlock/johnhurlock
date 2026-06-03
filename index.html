@@ -10,11 +10,11 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --accent: #c9922a;
-    --accent2: #e8b84b;
+    --accent: #38bdf8;
+    --accent2: #7dd3fc;
     --bg: #0a0a0f;
     --card-bg: rgba(255,255,255,0.05);
-    --card-border: rgba(201,146,42,0.22);
+    --card-border: rgba(56,189,248,0.22);
     --text: #f5f0e8;
     --muted: rgba(245,240,232,0.45);
     --font-display: 'Cinzel', serif;
@@ -84,7 +84,7 @@
     border-radius: 6px;
     transition: background 0.2s;
   }
-  #proxy-back:hover { background: rgba(201,146,42,0.12); }
+  #proxy-back:hover { background: rgba(56,189,248,0.12); }
   #proxy-iframe {
     flex: 1; border: none; width: 100%;
     background: #000;
@@ -112,11 +112,11 @@
     border-radius: 50%;
     object-fit: cover; object-position: top;
     border: 2px solid var(--accent);
-    box-shadow: 0 0 30px rgba(201,146,42,0.45), 0 0 60px rgba(201,146,42,0.15);
+    box-shadow: 0 0 30px rgba(56,189,248,0.45), 0 0 60px rgba(56,189,248,0.15);
     transition: box-shadow 0.3s;
   }
   .logo-img:hover {
-    box-shadow: 0 0 45px rgba(201,146,42,0.7), 0 0 80px rgba(201,146,42,0.25);
+    box-shadow: 0 0 45px rgba(56,189,248,0.7), 0 0 80px rgba(56,189,248,0.25);
   }
   .logo-name {
     font-family: var(--font-display);
@@ -143,7 +143,7 @@
   }
   .search-box:focus-within {
     border-color: var(--accent);
-    box-shadow: 0 0 20px rgba(201,146,42,0.18);
+    box-shadow: 0 0 20px rgba(56,189,248,0.18);
   }
   .search-box svg { flex-shrink: 0; opacity: 0.4; }
   #search-input {
@@ -179,14 +179,14 @@
   .shortcut-icon {
     width: 42px; height: 42px; border-radius: 12px;
     background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(201,146,42,0.15);
+    border: 1px solid rgba(56,189,248,0.15);
     display: flex; align-items: center; justify-content: center;
     transition: background 0.2s, border-color 0.2s;
     backdrop-filter: blur(8px);
   }
   .shortcut:hover .shortcut-icon {
-    background: rgba(201,146,42,0.12);
-    border-color: rgba(201,146,42,0.4);
+    background: rgba(56,189,248,0.12);
+    border-color: rgba(56,189,248,0.4);
   }
   .shortcut-icon svg { width: 20px; height: 20px; fill: currentColor; }
   .shortcut span { font-size: 0.7rem; letter-spacing: 0.08em; text-transform: lowercase; }
@@ -212,12 +212,12 @@
     -webkit-backdrop-filter: blur(10px);
   }
   .nav-card:hover {
-    color: var(--accent2); border-color: rgba(201,146,42,0.5);
-    background: rgba(201,146,42,0.07); transform: translateY(-2px);
+    color: var(--accent2); border-color: rgba(56,189,248,0.5);
+    background: rgba(56,189,248,0.07); transform: translateY(-2px);
   }
   .nav-card.active {
     border-color: var(--accent); color: var(--accent2);
-    background: rgba(201,146,42,0.1);
+    background: rgba(56,189,248,0.1);
   }
   .nav-card svg { width: 24px; height: 24px; fill: currentColor; }
   .nav-label { font-size: 0.72rem; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; }
@@ -245,8 +245,8 @@
     backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
   }
   .app-card:hover {
-    color: var(--accent2); border-color: rgba(201,146,42,0.45);
-    background: rgba(201,146,42,0.08); transform: translateY(-2px);
+    color: var(--accent2); border-color: rgba(56,189,248,0.45);
+    background: rgba(56,189,248,0.08); transform: translateY(-2px);
   }
   .app-card svg { width: 28px; height: 28px; fill: currentColor; }
   .app-name { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 400; }
@@ -285,14 +285,14 @@
   .bg-swatch:hover, .bg-swatch.active { border-color: var(--accent); transform: scale(1.1); }
   .bg-swatch.none-swatch {
     background: rgba(255,255,255,0.05);
-    border: 2px solid rgba(201,146,42,0.3);
+    border: 2px solid rgba(56,189,248,0.3);
     display: flex; align-items: center; justify-content: center;
     font-size: 10px; color: var(--accent);
   }
   /* star toggle swatch */
   .bg-swatch.stars-swatch {
     background: radial-gradient(ellipse at center, #1a1a2e 0%, #000 100%);
-    border: 2px solid rgba(201,146,42,0.3);
+    border: 2px solid rgba(56,189,248,0.3);
     display: flex; align-items: center; justify-content: center;
     font-size: 14px;
   }
@@ -306,15 +306,15 @@
   }
   .settings-input:focus { border-color: var(--accent); }
   .settings-btn {
-    background: rgba(201,146,42,0.12);
-    border: 1px solid rgba(201,146,42,0.3);
+    background: rgba(56,189,248,0.12);
+    border: 1px solid rgba(56,189,248,0.3);
     color: var(--accent2); border-radius: 8px;
     padding: 0.35rem 0.75rem; font-size: 0.72rem;
     letter-spacing: 0.08em; cursor: pointer;
     font-family: var(--font-body); text-transform: uppercase;
     transition: background 0.2s; margin-right: 0.4rem;
   }
-  .settings-btn:hover { background: rgba(201,146,42,0.22); }
+  .settings-btn:hover { background: rgba(56,189,248,0.22); }
   .overlay-slider-wrap { margin-top: 0.4rem; }
   input[type=range].overlay-slider { width: 100%; accent-color: var(--accent); }
   .accent-options { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-top: 0.3rem; }
@@ -332,7 +332,7 @@
     display: flex; align-items: center; justify-content: space-between;
     padding: 0.5rem 1.5rem;
     background: rgba(5,4,2,0.88);
-    border-top: 1px solid rgba(201,146,42,0.12);
+    border-top: 1px solid rgba(56,189,248,0.12);
     backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
   }
   .bottom-btn {
@@ -342,7 +342,7 @@
     padding: 0.3rem 0.5rem; border-radius: 10px;
   }
   .bottom-btn:hover, .bottom-btn.active { color: var(--accent2); transform: translateY(-1px); }
-  .bottom-btn.active { background: rgba(201,146,42,0.1); }
+  .bottom-btn.active { background: rgba(56,189,248,0.1); }
   .bottom-btn svg { width: 20px; height: 20px; fill: currentColor; }
   .bottom-btn span { font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; }
 
@@ -390,7 +390,7 @@
     <!-- LOGO: replace logo.png with your photo in the same folder as index.html -->
     <img class="logo-img" src="logo.png" id="logo-img" alt="John Hurlock"
          onerror="this.style.display='none'; document.getElementById('logo-fallback').style.display='flex'">
-    <div id="logo-fallback" style="display:flex;width:90px;height:90px;border-radius:50%;border:2px solid var(--accent);box-shadow:0 0 30px rgba(201,146,42,0.45);align-items:center;justify-content:center;font-family:var(--font-display);font-size:1.6rem;color:var(--accent2);background:rgba(201,146,42,0.08)">JH</div>
+    <div id="logo-fallback" style="display:flex;width:90px;height:90px;border-radius:50%;border:2px solid var(--accent);box-shadow:0 0 30px rgba(56,189,248,0.45);align-items:center;justify-content:center;font-family:var(--font-display);font-size:1.6rem;color:var(--accent2);background:rgba(56,189,248,0.08)">JH</div>
     <div class="logo-name">john hurlock</div>
   </div>
 
@@ -455,7 +455,7 @@
   <div id="panel-watch" class="panel">
     <p class="section-title">watch</p>
     <div class="panel-row">
-      <button class="app-card" onclick="openProxy('/proxy/')">
+      <button class="app-card" onclick="openProxy('https://cineby.app')">
         <svg viewBox="0 0 24 24"><path d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-9 13l-5-5h3V9h4v2h3l-5 5z"/></svg>
         <span class="app-name">Cineby</span>
         <span class="app-sub">Movies &amp; Series</span>
@@ -594,7 +594,7 @@
       <div class="settings-card">
         <div class="settings-title">Accent Colour</div>
         <div class="accent-options" id="accent-options">
-          <div class="accent-dot active" data-accent="#c9922a" data-accent2="#e8b84b" style="background:#c9922a" title="Gold"></div>
+          <div class="accent-dot active" data-accent="#38bdf8" data-accent2="#7dd3fc" style="background:#38bdf8" title="Gold"></div>
           <div class="accent-dot" data-accent="#e05252" data-accent2="#f07070" style="background:#e05252" title="Red"></div>
           <div class="accent-dot" data-accent="#4a9eff" data-accent2="#7bbfff" style="background:#4a9eff" title="Blue"></div>
           <div class="accent-dot" data-accent="#50c878" data-accent2="#7dde9e" style="background:#50c878" title="Green"></div>
